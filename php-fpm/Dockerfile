@@ -19,5 +19,6 @@ RUN apt update && apt install -y apache2 && \
     zip
 
 COPY run.sh /
+COPY config/*.ini /usr/local/etc/php/conf.d/
 RUN  chmod 755 /run.sh
 ENTRYPOINT ["/run.sh"]
