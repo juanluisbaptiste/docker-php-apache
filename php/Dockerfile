@@ -7,8 +7,13 @@ ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/mas
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync && \
     install-php-extensions exif gd gettext mysqli opcache pdo_mysql zip
 
-RUN a2enmod rewrite && \
-    a2enmod headers
+RUN apt update && apt install -y apache2 && \
+    a2enmod rewrite && \
+    a2enmod headers && \
+    a2enmod proxy && \
+    a2enmod proxy_fcgi && \
+    a2enmod deflate && \
+    a2enmod proxy expires
 
 COPY run.sh /
 RUN  chmod 755 /run.sh
