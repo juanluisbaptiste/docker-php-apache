@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+[[ "${DEBUG_MODE}" == "true" ]] && set -x
 
 SERVER_NAME="${SERVER_NAME:-localhost}"
 PHP_UPLOAD_MAX_SIZE="${PHP_UPLOAD_MAX_SIZE:-2G}"
