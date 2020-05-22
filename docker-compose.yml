@@ -1,12 +1,12 @@
 version: "3.7"
 services:
-  # php:
-  #   image: juanluisbaptiste/apache-php:dev
-  #   networks:
-  #     - backend
-  #   volumes:
-  #     - ./volumes/wordpress:/var/www/html/
-  #   container_name: php
+  php:
+    image: juanluisbaptiste/apache-php:dev
+    networks:
+      - backend
+    volumes:
+      - ./volumes/wordpress:/var/www/html/
+    container_name: php
   php-fpm:
     image: juanluisbaptiste/php-fpm:dev
     networks:
@@ -14,10 +14,6 @@ services:
     volumes:
       - ./volumes/wordpress/:/var/www/html/
     container_name: php-fpm
-  apache:
-    image: juanluisbaptiste/apache:dev
-    depends_on:
-      - php-fpm
     networks:
       - frontend
       - backend
@@ -25,7 +21,19 @@ services:
       - "80:80"
     volumes:
       - ./volumes/wordpress/:/var/www/html/
-    container_name: apache
+
+  # apache:
+  #   image: juanluisbaptiste/apache:dev
+  #   depends_on:
+  #     - php-fpm
+  #   networks:
+  #     - frontend
+  #     - backend
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./volumes/wordpress/:/var/www/html/
+  #   container_name: apache
 networks:
   frontend:
   backend:
