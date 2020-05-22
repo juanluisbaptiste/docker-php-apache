@@ -14,13 +14,13 @@ services:
     volumes:
       - ./volumes/wordpress/:/var/www/html/
     container_name: php-fpm
+  apache-php-fpm:
+    image: juanluisbaptiste/apache-php-fpm:dev
     networks:
-      - frontend
       - backend
-    ports:
-      - "80:80"
     volumes:
       - ./volumes/wordpress/:/var/www/html/
+    container_name: apache-php-fpm
 
   # apache:
   #   image: juanluisbaptiste/apache:dev

@@ -12,3 +12,9 @@ services:
       args:
        PHP_VERSION: ${PHP_VERSION}
     container_name: php-fpm
+  apache-php-fpm:
+    build:
+      context: './apache-php-fpm/'
+      args:
+       PHP_VERSION: ${PHP_VERSION}
+    container_name: apache-php-fpm
